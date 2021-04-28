@@ -1,0 +1,8 @@
+{
+    "plugins": [
+      "check-es2015-constants",
+      "es2015-arrow-functions",
+      "es2015-block-scoped-functions",
+      // ...
+    ]
+  }
