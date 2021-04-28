@@ -7,7 +7,7 @@
       "target": "es5",
       "jsx": "react",
       "allowJs": true,
-      "moduleResolution":"Node"
+      "moduleResolution":"Node"   // moduleResolution的两种配置，node会先到node_modules目录去查找，classic会优先到外层去查找，找不到才会去node_modules目录去查找
     },
     "include": [ // 哪些路径需要ts解析
       "src/**/*.ts"

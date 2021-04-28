@@ -25,7 +25,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "Hello World app",
+      title: "Hello World rxjs-typeScript",
       hash: true,
       filename: "index.html",
       template: "./src/index.html", //new 一个这个插件的实例，并传入相关的参数
