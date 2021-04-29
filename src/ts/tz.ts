@@ -19,10 +19,10 @@ class Tz {
 
   private init() {
     const box = document.getElementById("app");
-    const mouseDown$ = fromEvent(box, "mousedown");
-    const mouseUp$ = fromEvent(box, "mouseup");
-    const mouseOut$ = fromEvent(box, "mouseout");
-    const mouseMove$ = fromEvent(box, "mousemove");
+    const mouseDown$ = fromEvent(box, "mousedown");  // 当鼠标指针移动到元素上方,并按下鼠标左键时
+    const mouseUp$ = fromEvent(box, "mouseup");   // 当鼠标指针移动到元素上方,并松开鼠标左键时
+    const mouseOut$ = fromEvent(box, "mouseout");  // 当鼠标指针从元素上移开时
+    const mouseMove$ = fromEvent(box, "mousemove"); // 当鼠标指针在指定的元素中移动时,
 
     console.log(mouseDown$);
 
