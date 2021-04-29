@@ -21,13 +21,13 @@
     "rxjs": "^6.6.7",
     "ts-loader": "^7.0.5",
     "typescript": "^3.9.9",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "webpack": "^5.36.1",
-    "webpack-cli": "^4.6.0",
     "@reactivex/rxjs": "^6.6.7",
     "@types/webpack": "^5.28.0",
-    "copy-webpack-plugin": "^8.1.1"
+    "copy-webpack-plugin": "^8.1.1",
+    "webpack": "^5.36.1"
   }
 }
