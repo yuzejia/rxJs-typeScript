@@ -4,11 +4,40 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const glob = require("glob");
+const WebpackParallelUglifyPlugin = require("webpack-parallel-uglify-plugin");
+const PurifyCSSPlugin = require("purifycss-webpack");
+let lists = [];
+let HtmlPluginLists = [];
+
+function getList(path) {
+  var list = glob.sync(path);
+  console.log(list);
+  list.forEach((item, index) => {
+    console.log(item.split("/"));
+    var name = item.split("/")[3].split(".")[0];
+    lists[index] = {};
+    lists[index].name = name;
+    lists[index].src = item.split(".html")[0];
+  });
+}
+
+function entryList(path) {
+  getList(path);
+  lists.forEach((item, index) => {
+    HtmlPluginLists[index] = new HtmlWebpackPlugin({
+      filename: item.name + ".html",
+      template: item.src + ".html",
+      hash: true,
+    });
+  });
+  return HtmlPluginLists;
+}
+
 module.exports = {
   entry: {
-    "main-ts":  glob.sync("./src/**/*.ts"),
-    "main-js":  glob.sync("./src/**/*.js"),
-
+    "main-ts": glob.sync("./src/**/*.ts"),
+    "main-js": glob.sync("./src/**/*.js"),
+    "main-html": glob.sync("./src/**/*.html"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -17,15 +46,13 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
     },
   },
   mode: "development",
   devtool: "inline-source-map",
   module: {
-    rules: [
-      { test: /\.ts$/, use: "ts-loader" }
-    ],
+    rules: [{ test: /\.ts$/, use: "ts-loader" }],
   },
   devServer: {
     contentBase: "./dist",
@@ -37,17 +64,7 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: "Hello World rxjs-typeScript",
-      hash: true,
-      filename: "index.html",
-      template: "./src/index.html", //new 一个这个插件的实例，并传入相关的参数
-    }),
+    ...entryList("./src/html/*.html"),
 
-    new CopyPlugin({
-      patterns: [
-        { from: __dirname + "/src/html", to: __dirname + "/dist/html" },
-      ],
-    }),
   ],
 };

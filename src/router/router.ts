@@ -1,5 +1,5 @@
 const routers = [
-   {name: 'drag.html', url : './html/drag.html'} 
+   {name: 'drag.html', url : './drag.html'} 
 ]
 
 export default class Router {
@@ -24,3 +24,4 @@ export default class Router {
 
 }
 
+new Router()
