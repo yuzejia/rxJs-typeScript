@@ -1,14 +1,26 @@
-export const routers = [
-    './html/drag.html'
+const routers = [
+   {name: 'drag.html', url : './html/drag.html'} 
 ]
-const app = document.getElementById('app');
 
-class Router {
+export default class Router {
 
     constructor() {
+        this.init();
+    }
 
+    init() {
+        const app = document.getElementById('router');
+
+        let a = document.createElement('a');
+
+        routers.forEach(e => {
+            a.setAttribute('href', e.url);
+            a.innerHTML = e.name;
+            app.appendChild(a);
+            
+            })
     }
 
 
 }
-console.log('22233322222222');
+

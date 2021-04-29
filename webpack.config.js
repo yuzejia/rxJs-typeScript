@@ -20,8 +20,9 @@ module.exports = {
     modules: ["node_modules"],
   },
   output: {
-    filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[hash].js',
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -29,7 +30,7 @@ module.exports = {
       title: "Hello World rxjs-typeScript",
       hash: true,
       filename: "index.html",
-      template: "./src/index.html", //new 一个这个插件的实例，并传入相关的参数
+      template: "./index.html", //new 一个这个插件的实例，并传入相关的参数
     }),
 
     new CopyPlugin({

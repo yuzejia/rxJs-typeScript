@@ -11,9 +11,9 @@ import { concatMap, map, merge, takeUntil } from "rxjs/operators";
 // merge 将多个 observables 转换成单个 observable 。
 
 // map 对源 observable 的每个值应用投射函数。
-
 class Tz {
   constructor() {
+    
     this.init();
   }
 
@@ -49,6 +49,4 @@ class Tz {
       });
   }
 }
-
-const a = new Tz();
 
