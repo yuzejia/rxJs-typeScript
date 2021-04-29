@@ -14,5 +14,10 @@
     ],
     "exclude": [ // 哪些路径ts忽略
       "node_modules"
-    ]
+    ],
+    "paths": { 
+      "@": [
+        "src/*"
+      ]
+    }
 }
